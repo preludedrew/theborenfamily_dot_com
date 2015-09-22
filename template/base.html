@@ -1,5 +1,6 @@
 $def with (page)
 $ photo_dirs = get_picture_dirs()
+$ photo_dict = get_pictures_dict()
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -9,10 +10,14 @@ $ photo_dirs = get_picture_dirs()
     $if page.title:
         | $page.title
     </title>
+    $if page != "pictures":
+      <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
     <link rel="shortcut icon" href="/static/res/img/ico/favicon.png">
     <link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Roboto">
     <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css">
     <link rel="stylesheet" type="text/css" href="/static/res/css/custom.css">
+    <link rel="stylesheet" type="text/css" href="static/res/css/style.css" />
+    <link rel="stylesheet" type="text/css" href="static/res/css/elastislide.css" />
   </head>
   <body>
     <div class="body-wrap">
@@ -28,9 +33,15 @@ $ photo_dirs = get_picture_dirs()
         </div><!--header-->
         <div class="collapse navbar-collapse navbar-main-collapse">
           <ul class="nav navbar-nav">
-            $for ii in photo_dirs:
-              <li id="nav-pictures-$ii">
-                <a href="/pictures?dir=$ii">$ii</a>
+            $for xx in photo_dict:
+              <li class="dropdown">
+                <a class="dropdown-toggle" data-toggle="dropdown">$xx<b class="caret"></b></a>
+                <ul class="dropdown-menu">
+                  $for zz in photo_dict[xx]:
+                    <li>
+                      <a href="/pictures?dir=$xx/$zz"">$zz</a>
+                    </li>
+                </ul>
               </li>
           </ul>
         </div><!--collapse-->
@@ -49,21 +60,5 @@ $:page $# Don't move this
     </div><!--navbar-->
     <script src="//netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script>
     <script type="text/javascript" src="/static/res/js/js-url.min.js"></script>
-    <script type="text/javascript">
-    (function(){
-        /* Highlight current page */
-        page = url(1);
-        
-        dir = url(0).split('=')[1];
-
-        if(page == 'pictures') {
-            $$('li#nav-pictures-' + dir).addClass('active');
-        }
-    })(jQuery);
-    function writeMessage(message){
-      $$('#modal-title').html('Notes');
-      $$('.modal-body').html('<p>'+message+'</p>');
-    }
-    </script>
   </body>
 </html>

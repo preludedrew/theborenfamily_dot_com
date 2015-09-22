@@ -3,6 +3,7 @@
 import web
 import os
 import sys
+import inspect
 
 if __name__ != "__main__":              # mod_wsgi has no concept of where it is
     abspath = os.path.dirname(__file__)
@@ -18,6 +19,7 @@ urls = (
 
 t_globals = {
     'get_picture_dirs': get_picture_dirs,
+    'get_pictures_dict': get_pictures_dict,
 }
 
 render = web.template.render('template',base='base', globals=t_globals)
@@ -30,6 +32,7 @@ class Pictures:
     def GET(self, none):
         data = web.input()
         photos_dir = "static/res/photos/%s/" % data.dir
+        print "DEBUG (%s::%s): %s" % (self.__class__.__name__, inspect.stack()[0][3], photos_dir)
         return render.pictures(get_pictures(photos_dir), photos_dir)
 
 app = web.application(urls, globals())

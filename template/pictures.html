@@ -4,9 +4,6 @@ $var title: Pictures
 <!DOCTYPE html>
 <html lang="en">
     <head>
-        <title>Responsive Image Gallery</title>
-        <link rel="stylesheet" type="text/css" href="static/res/css/style.css" />
-        <link rel="stylesheet" type="text/css" href="static/res/css/elastislide.css" />
         <noscript>
             <style>
                 .es-carousel ul{
@@ -33,6 +30,11 @@ $var title: Pictures
         </script>
     </head>
     <body>
+        <div class="row hidden-xs">
+          <div class="page-header top-header">
+            <h3>$img_location</h3>
+          </div><!--page-header-->
+        </div><!--row-->
         <div class="container-gal">
             <div class="content">
                 <div id="rg-gallery" class="rg-gallery">
