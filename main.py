@@ -22,6 +22,7 @@ t_globals = {
     'get_pictures_dict': get_pictures_dict,
     'strip_underscore': strip_underscore,
     'format_pictures_header': format_pictures_header,
+    'get_picture_caption': get_picture_caption,
 }
 
 render = web.template.render('template',base='base', globals=t_globals)

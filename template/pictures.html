@@ -48,7 +48,8 @@ $var title: Pictures
                             <div class="es-carousel">
                                 <ul>
                                   $for ii in carousel_imgs:
-                                    <li><a href="#"><img src="$img_location/thumbs/$ii" data-large="$img_location/$ii" data-description="$img_location/$ii" /></a></li>
+                                    $ caption = get_picture_caption(img_location + ii)
+                                    <li><a href="#"><img src="$img_location/thumbs/$ii" data-large="$img_location/$ii" data-description="$caption" /></a></li>
                                 </ul>
                             </div>
                         </div>

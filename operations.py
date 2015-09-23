@@ -5,6 +5,7 @@ __all__ = (
         "get_pictures_dict",
         "strip_underscore",
         "format_pictures_header",
+        "get_picture_caption",
 )
 
 # Used by Pictures
@@ -23,6 +24,8 @@ def get_pictures(location):
     pics = []
     try:
         pics = [ f for f in os.listdir(location) if os.path.isfile(os.path.join(location, f)) ]
+        # Remove any items that are caption files
+        pics = [x for x in pics if not ".cpt" in x.lower()]
     except OSError as e:
         pass
     return pics
@@ -47,3 +50,17 @@ def format_pictures_header(string):
         string = string[:-1]
     string = strip_underscore(string.replace ("static/res/photos/", "").replace("/", " / "))
     return string
+
+def get_picture_caption(pic_filepath):
+    print "DEBUG: %s" % pic_filepath
+    caption_file = "%s.cpt" % os.path.splitext(pic_filepath)[0]
+
+    try:
+        with open(caption_file, 'r') as f:
+            caption = f.readline()
+    except IOError as e:
+        caption = pic_filepath
+    except:
+        caption = "Unexpecter Error!!"
+
+    return caption
