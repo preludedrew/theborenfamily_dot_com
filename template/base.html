@@ -35,11 +35,11 @@ $ photo_dict = get_pictures_dict()
           <ul class="nav navbar-nav">
             $for xx in photo_dict:
               <li class="dropdown">
-                <a class="dropdown-toggle" data-toggle="dropdown">$xx<b class="caret"></b></a>
+                <a class="dropdown-toggle" data-toggle="dropdown">$strip_underscore(xx)<b class="caret"></b></a>
                 <ul class="dropdown-menu">
                   $for zz in photo_dict[xx]:
                     <li>
-                      <a href="/pictures?dir=$xx/$zz"">$zz</a>
+                      <a href="/pictures?dir=$xx/$zz"">$strip_underscore(zz)</a>
                     </li>
                 </ul>
               </li>

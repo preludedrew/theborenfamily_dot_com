@@ -3,6 +3,8 @@ __all__ = (
         "get_pictures",
         "get_picture_dirs",
         "get_pictures_dict",
+        "strip_underscore",
+        "format_pictures_header",
 )
 
 # Used by Pictures
@@ -36,3 +38,12 @@ def get_pictures_dict(location='static/res/photos'):
     except OSError as e:
         pass
     return dir_dict
+
+def strip_underscore(string):
+    return string.replace ("_", " ")
+
+def format_pictures_header(string):
+    if string.endswith('/'):
+        string = string[:-1]
+    string = strip_underscore(string.replace ("static/res/photos/", "").replace("/", " / "))
+    return string
