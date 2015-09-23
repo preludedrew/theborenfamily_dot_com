@@ -32,8 +32,11 @@ $ photo_dict = get_pictures_dict()
         </div><!--header-->
         <div class="collapse navbar-collapse navbar-main-collapse">
           <ul class="nav navbar-nav">
+            <li id="nav-videos">
+              <a href="/videos">Videos</a>
+            </li>
             $for xx in photo_dict:
-              <li class="dropdown">
+              <li id="nav-pictures-$xx" class="dropdown">
                 <a class="dropdown-toggle" data-toggle="dropdown">$strip_underscore(xx)<b class="caret"></b></a>
                 <ul class="dropdown-menu">
                   $for zz in photo_dict[xx]:
@@ -59,5 +62,22 @@ $:page $# Don't move this
     </div><!--navbar-->
     <script src="//netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script>
     <script type="text/javascript" src="/static/res/js/js-url.min.js"></script>
+    <script type="text/javascript">
+    (function(){
+        /* Highlight current page */
+        page = url(1);
+
+        if (page == 'videos') {
+            $$('li#nav-videos').addClass('active');
+        } else if(page == 'pictures') {
+            root_dir = url(0).split('=')[1].split('/')[0];
+            $$('li#nav-pictures-' + root_dir).addClass('active');
+        }
+    })(jQuery);
+    function writeMessage(message){
+      $$('#modal-title').html('Notes');
+      $$('.modal-body').html('<p>'+message+'</p>');
+    }
+    </script>
   </body>
 </html>

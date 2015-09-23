@@ -1,0 +1,42 @@
+$var title:
+<html>
+    <head>
+        <script type="text/javascript" src="http://video.limelight.com/player/embed.js"></script>
+    </head>
+
+    <body>
+        <div class="row hidden-xs">
+            <div class="page-header top-header">
+                <h3>Videos</h3>
+            </div><!--page-header-->
+        </div><!--row-->
+
+        <div id="content" class="video-player-large">
+            <span class="LimelightEmbeddedPlayer">
+                <script src="//video.limelight.com/player/embed.js"></script>
+                <object type="application/x-shockwave-flash" id="limelight_player_770415" name="limelight_player_770415" class="LimelightEmbeddedPlayerFlash" width="960" height="360" data="//video.limelight.com/player/loader.swf">
+                    <param name="movie" value="//video.limelight.com/player/loader.swf"/>
+                    <param name="wmode" value="window"/>
+                    <param name="allowScriptAccess" value="always"/>
+                    <param name="allowFullScreen" value="true"/>
+                    <param name="flashVars" value="deepLink=true&amp;channelId=d52b95e081484552ab0f2b5eb93b938f&amp;playerForm=PlayerHorizontalPlaylist"/>
+                </object>
+                <script>LimelightPlayerUtil.initEmbed('limelight_player_770415');</script>
+            </span>
+        </div>
+
+        <div id="content" class="video-player-small">
+            <span class="LimelightEmbeddedPlayer">
+                <script src="//video.limelight.com/player/embed.js"></script>
+                <object type="application/x-shockwave-flash" id="limelight_player_162017" name="limelight_player_162017" class="LimelightEmbeddedPlayerFlash" width="320" height="360" data="//video.limelight.com/player/loader.swf">
+                    <param name="movie" value="//video.limelight.com/player/loader.swf"/>
+                    <param name="wmode" value="window"/>
+                    <param name="allowScriptAccess" value="always"/>
+                    <param name="allowFullScreen" value="true"/>
+                    <param name="flashVars" value="deepLink=true&amp;channelId=d52b95e081484552ab0f2b5eb93b938f&amp;playerForm=PlayerVerticalPlaylist"/>
+                </object>
+                <script>LimelightPlayerUtil.initEmbed('limelight_player_162017');</script>
+            </span>
+        </div>
+    </body>
+</html>

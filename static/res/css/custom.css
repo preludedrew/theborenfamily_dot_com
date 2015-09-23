@@ -23,6 +23,19 @@ a:focus {
   padding-top: 70px;
   padding-bottom: 70px;
 }
+.navbar-inverse.navbar-main .navbar-nav > li,
+.navbar-inverse.navbar-main .navbar-nav > li > a {
+  font-size: 12pt;
+  color: #ffffff;
+}
+.navbar-inverse.navbar-main .navbar-nav > li:hover,
+.navbar-inverse.navbar-main .navbar-nav > li:focus,
+.navbar-inverse.navbar-main .navbar-nav > .active > a,
+.navbar-inverse.navbar-main .navbar-nav > .active > a:hover,
+.navbar-inverse.navbar-main .navbar-nav > .active > a:focus {
+  color: #f1f1ed;
+  background-color: #C50000;
+}
 .navbar-inverse.navbar-main .navbar-nav > .dropdown > .dropdown-toggle {
   font-size: 12pt;
   color: #f1f1ed;
@@ -74,4 +87,34 @@ a:focus {
   .jumbotron h1 {
     font-size: 70px;
   }
+}
+.video-player-large {
+    margin-top: 50px;
+    width: 960px;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+.video-player-small {
+    margin-top: 25px;
+    width: 320px;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+@media screen and (max-width: 480px){
+    .video-player-large {
+        display: none;
+    }
+    .video-player-small {
+        display: block;
+    }
+}
+@media screen and (min-width:481px){
+    .video-player-large {
+        display: block;
+    }
+    .video-player-small {
+        display: none;
+    }
 }

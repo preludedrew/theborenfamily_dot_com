@@ -14,7 +14,8 @@ from operations import *
 
 urls = (
     '/','Default',
-    '/(.+)', 'Pictures',
+    '/pictures', 'Pictures',
+    '/videos', 'Videos',
 )
 
 t_globals = {
@@ -31,8 +32,12 @@ class Default:
     def GET(self):
         return render.default()
 
+class Videos:
+    def GET(self):
+        return render.videos()
+
 class Pictures:
-    def GET(self, none):
+    def GET(self, path=None):
         data = web.input()
         photos_dir = "static/res/photos/%s/" % data.dir
         print "DEBUG (%s::%s): %s" % (self.__class__.__name__, inspect.stack()[0][3], photos_dir)
