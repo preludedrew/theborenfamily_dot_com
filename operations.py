@@ -59,7 +59,7 @@ def get_picture_caption(pic_filepath):
         with open(caption_file, 'r') as f:
             caption = f.readline()
     except IOError as e:
-        caption = pic_filepath
+        caption = os.path.basename(pic_filepath)
     except:
         caption = "Unexpecter Error!!"
 
