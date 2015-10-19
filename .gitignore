@@ -1,2 +1,5 @@
 *.pyc
 static/res/photos/*
+static/res/videos/*
+sessions/*
+config.json

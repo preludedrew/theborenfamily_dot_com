@@ -1,4 +1,9 @@
 import os
+import subprocess
+import thread
+from wand.image import Image
+from ll_upload import upload_video
+
 __all__ = (
         "get_pictures",
         "get_picture_dirs",
@@ -6,6 +11,8 @@ __all__ = (
         "strip_underscore",
         "format_pictures_header",
         "get_picture_caption",
+        "process_picture_upload",
+        "process_video_upload",
 )
 
 # Used by Pictures
@@ -64,3 +71,33 @@ def get_picture_caption(pic_filepath):
         caption = "Unexpecter Error!!"
 
     return caption
+
+def process_picture_upload(file, upload_dir):
+
+    filepath = file.filename.replace('\\', '/')
+    filename = filepath.split('/')[-1]
+    full_path = upload_dir + filename
+    fout = open(full_path, 'w')
+    fout.write(file.file.read())
+    fout.close()
+
+    with Image(filename=full_path) as original:
+        if original.orientation == "right_top":
+            original.rotate(90)
+            original.save(filename=full_path)
+        print "Original Orientation: %s" % original.orientation
+        with original.clone() as cloned:
+            cloned.resize(65,65)
+            cloned.save(filename=upload_dir + "thumbs/" + filename)
+            print "Cloned Orientation: %s" % cloned.orientation
+
+def process_video_upload(file, upload_dir, title):
+
+    filepath = file.filename.replace('\\', '/')
+    filename = filepath.split('/')[-1]
+    full_path = upload_dir + filename
+    fout = open(full_path, 'w')
+    fout.write(file.file.read())
+    fout.close()
+
+    thread.start_new_thread(upload_video, (full_path, title))

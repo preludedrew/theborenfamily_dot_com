@@ -41,10 +41,13 @@ $ photo_dict = get_pictures_dict()
                 <ul class="dropdown-menu">
                   $for zz in photo_dict[xx]:
                     <li>
-                      <a href="/pictures?dir=$xx/$zz"">$strip_underscore(zz)</a>
+                      <a href="/pictures?dir=$xx/$zz">$strip_underscore(zz)</a>
                     </li>
                 </ul>
               </li>
+            <li id="nav-upload">
+              <a href="/upload">Upload</a>
+            </li>
           </ul>
         </div><!--collapse-->
       </nav><!--navbar-->

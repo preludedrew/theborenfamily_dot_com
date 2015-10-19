@@ -1,0 +1,29 @@
+$var title:
+<body>
+    <div class="row hidden-xs">
+        <div class="page-header top-header">
+            <h3>Upload</h3>
+        </div><!--page-header-->
+    </div><!--row-->
+
+    <div id="content" class="upload">
+	<div id="upload-photos" class="upload-photos">
+            <h1 class="form-title">Photos</h1>
+            <form method="POST" enctype="multipart/form-data" accept="image/*" action=""> 
+                <input type="file" name="pictures" class="file_input"/>
+                <input type="file" name="pictures" class="file_input"//>
+                <input type="file" name="pictures" class="file_input"//>
+                <input type="file" name="pictures" class="file_input"//>
+                <input type="submit" id="submit-pictures" class="submit" value="Upload"/>
+            </form>
+        </div>
+        <div id="upload-videos" class="upload-videos">
+            <h1 class="form-title">Videos</h1>
+            <form method="POST" enctype="multipart/form-data" accept="video/*" action=""> 
+                <input type="file" name="video_file" class="file_input"/>
+                <input type="text" name="video_title" placeholder="Video Title" class="text_input"/>
+                <input type="submit" id="submit-videos" class="submit" value="Upload"/>
+            </form>
+	</div>
+    </div>
+</body>
