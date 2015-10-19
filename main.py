@@ -28,6 +28,8 @@ urls = (
     '/login', 'Login',
     '/upload', 'Upload',
     '/failed', 'Failed',
+    '/404', 'NotFound',
+    '/(.+)', 'Catchall',
 )
 
 t_globals = {
@@ -102,6 +104,14 @@ class Login:
 class Failed:
     def GET(self):
         return render.failed()
+
+class NotFound:
+    def GET(self):
+        return render.notfound()
+
+class Catchall:
+    def GET(self,path=None):
+        raise web.seeother('/404')
 
 if __name__ == "__main__":
     app.run() # devel
